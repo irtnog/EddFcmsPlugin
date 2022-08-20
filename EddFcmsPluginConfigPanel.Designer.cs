@@ -52,6 +52,7 @@ namespace EddFcmsPlugin
             this.FcmsApiKeyInput.Name = "FcmsApiKeyInput";
             this.FcmsApiKeyInput.Size = new System.Drawing.Size(256, 20);
             this.FcmsApiKeyInput.TabIndex = 1;
+            this.FcmsApiKeyInput.UseSystemPasswordChar = true;
             // 
             // PictureBox1
             // 
