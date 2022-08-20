@@ -85,6 +85,8 @@ namespace EddFcmsPlugin
                 //istr = Prompt.ShowDialog("Data:", "Message box for config", istr);
                 ConfigPanel prompt = new ConfigPanel(fcmsEmailAddress, fcmsApiKey);
                 prompt.ShowDialog();
+                fcmsEmailAddress = prompt.FcmsEmailAddress;
+                fcmsApiKey = prompt.FcmsApiKey;
             }
 
             JObject jout = new JObject();
