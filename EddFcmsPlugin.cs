@@ -98,35 +98,5 @@ namespace EddFcmsPlugin
             System.IO.File.AppendAllText(@"c:\code\EddFcmsPlugin.txt", "Config " + outconfig + Environment.NewLine);
             return outconfig;
         }
-
-        public static class Prompt
-        {
-            public static string ShowDialog(string labeltext, string caption, string data)
-            {
-                Form prompt = new Form()
-                {
-                    Width = 500,
-                    Height = 300,
-                    FormBorderStyle = FormBorderStyle.FixedDialog,
-                    Text = caption,
-                    StartPosition = FormStartPosition.CenterScreen
-                };
-                Label fcmsEmailLabel = new Label() { Left = 50, Top = 20, Text = "FCMS Email" };
-                TextBox fcmsEmail = new TextBox() { Left = 50, Top = 50, Width = 400, Text = data };
-                Label fcmsApiKeyLabel = new Label() { Left = 50, Top = 70, Text = "FCMS API Key" };
-                TextBox fcmsApiKey = new TextBox() { Left = 50, Top = 100, Width = 400, Text = data };
-                Button confirmation = new Button() { Text = "OK", Left = 350, Width = 100, Top = 150, DialogResult = DialogResult.OK };
-                confirmation.Click += (sender, e) => { prompt.Close(); };
-                prompt.Controls.Add(fcmsEmailLabel);
-                prompt.Controls.Add(fcmsEmail);
-                prompt.Controls.Add(fcmsApiKeyLabel);
-                prompt.Controls.Add(fcmsApiKey);
-                prompt.Controls.Add(confirmation);
-                prompt.AcceptButton = confirmation;
-
-                return prompt.ShowDialog() == DialogResult.OK ? fcmsEmail.Text : "";
-            }
-        }
-
     }
 }
