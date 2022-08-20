@@ -87,21 +87,25 @@ namespace EddFcmsPlugin
                 Form prompt = new Form()
                 {
                     Width = 500,
-                    Height = 150,
+                    Height = 300,
                     FormBorderStyle = FormBorderStyle.FixedDialog,
                     Text = caption,
                     StartPosition = FormStartPosition.CenterScreen
                 };
-                Label textLabel = new Label() { Left = 50, Top = 20, Text = labeltext };
-                TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 400, Text = data };
-                Button confirmation = new Button() { Text = "OK", Left = 350, Width = 100, Top = 70, DialogResult = DialogResult.OK };
+                Label fcmsEmailLabel = new Label() { Left = 50, Top = 20, Text = "FCMS Email" };
+                TextBox fcmsEmail = new TextBox() { Left = 50, Top = 50, Width = 400, Text = data };
+                Label fcmsApiKeyLabel = new Label() { Left = 50, Top = 70, Text = "FCMS API Key" };
+                TextBox fcmsApiKey = new TextBox() { Left = 50, Top = 100, Width = 400, Text = data };
+                Button confirmation = new Button() { Text = "OK", Left = 350, Width = 100, Top = 150, DialogResult = DialogResult.OK };
                 confirmation.Click += (sender, e) => { prompt.Close(); };
-                prompt.Controls.Add(textBox);
+                prompt.Controls.Add(fcmsEmailLabel);
+                prompt.Controls.Add(fcmsEmail);
+                prompt.Controls.Add(fcmsApiKeyLabel);
+                prompt.Controls.Add(fcmsApiKey);
                 prompt.Controls.Add(confirmation);
-                prompt.Controls.Add(textLabel);
                 prompt.AcceptButton = confirmation;
 
-                return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : "";
+                return prompt.ShowDialog() == DialogResult.OK ? fcmsEmail.Text : "";
             }
         }
 
