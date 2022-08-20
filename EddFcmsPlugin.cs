@@ -83,7 +83,7 @@ namespace EddFcmsPlugin
             if (editit)
             {
                 //istr = Prompt.ShowDialog("Data:", "Message box for config", istr);
-                Form prompt = new ConfigPanel(fcmsEmailAddress, fcmsApiKey);
+                ConfigPanel prompt = new ConfigPanel(fcmsEmailAddress, fcmsApiKey);
                 prompt.ShowDialog();
             }
 
