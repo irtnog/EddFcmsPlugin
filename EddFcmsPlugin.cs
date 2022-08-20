@@ -11,6 +11,10 @@ namespace EddFcmsPlugin
 {
     public class EDDClass
     {
+        private string fcmsEmailAddress { get; set; }
+
+        private string fcmsApiKey { get; set; }
+
         public EDDClass()
         {
             System.Diagnostics.Debug.WriteLine("EddFcmsPlugin Made DLL instance");
@@ -73,8 +77,8 @@ namespace EddFcmsPlugin
         public string EDDConfig(string istr, bool editit)
         {
             JObject js = JObject.Parse(istr);
-            string fcmsEmailAddress = js != null ? js["fcmsEmailAddress"].Str() : "";
-            string fcmsApiKey = js != null ? js["fcmsApiKey"].Str() : "";
+            fcmsEmailAddress = js != null ? js["fcmsEmailAddress"].Str() : "";
+            fcmsApiKey = js != null ? js["fcmsApiKey"].Str() : "";
 
             if (editit)
             {
