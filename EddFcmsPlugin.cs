@@ -73,7 +73,9 @@ namespace EddFcmsPlugin
         {
             if (editit)
             {
-                istr = Prompt.ShowDialog("Data:", "Message box for config", istr);
+                //istr = Prompt.ShowDialog("Data:", "Message box for config", istr);
+                Form prompt = new ConfigPanel(istr, istr);
+                prompt.ShowDialog();
             }
 
             System.Diagnostics.Debug.WriteLine("EddFcmsPlugin EDD Config Event:" + istr);
