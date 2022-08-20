@@ -51,7 +51,7 @@ namespace EddFcmsPlugin
             this.fcmsApiKey.Location = new System.Drawing.Point(309, 230);
             this.fcmsApiKey.Name = "fcmsApiKey";
             this.fcmsApiKey.Size = new System.Drawing.Size(256, 20);
-            this.fcmsApiKey.TabIndex = 0;
+            this.fcmsApiKey.TabIndex = 1;
             // 
             // pictureBox1
             // 
@@ -97,7 +97,7 @@ namespace EddFcmsPlugin
             this.okButton.Location = new System.Drawing.Point(490, 319);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
-            this.okButton.TabIndex = 4;
+            this.okButton.TabIndex = 2;
             this.okButton.Text = "OK";
             this.okButton.UseVisualStyleBackColor = true;
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
