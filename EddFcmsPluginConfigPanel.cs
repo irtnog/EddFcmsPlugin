@@ -12,6 +12,10 @@ namespace EddFcmsPlugin
 {
     public partial class ConfigPanel : Form
     {
+        public string FcmsEmailAddress => FcmsEmailAddressInput.Text;
+
+        public string FcmsApiKey => FcmsApiKeyInput.Text;
+
         public ConfigPanel(string email, string apikey)
         {
             InitializeComponent();
