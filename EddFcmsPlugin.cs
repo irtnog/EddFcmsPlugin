@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuickJSON;
 
 namespace EddFcmsPlugin
 {
@@ -71,15 +72,25 @@ namespace EddFcmsPlugin
 
         public string EDDConfig(string istr, bool editit)
         {
+            JObject js = JObject.Parse(istr);
+            string fcmsEmailAddress = js != null ? js["fcmsEmailAddress"].Str() : "";
+            string fcmsApiKey = js != null ? js["fcmsApiKey"].Str() : "";
+
             if (editit)
             {
                 //istr = Prompt.ShowDialog("Data:", "Message box for config", istr);
-                Form prompt = new ConfigPanel(istr, istr);
+                Form prompt = new ConfigPanel(fcmsEmailAddress, fcmsApiKey);
                 prompt.ShowDialog();
             }
 
-            System.Diagnostics.Debug.WriteLine("EddFcmsPlugin EDD Config Event:" + istr);
-            return istr;
+            JObject jout = new JObject();
+            jout["fcmsEmailAddress"] = fcmsEmailAddress;
+            jout["fcmsApiKey"] = fcmsApiKey;
+            string outconfig = jout.ToString();
+
+            System.Diagnostics.Debug.WriteLine("EddFcmsPlugin EDD Config Event:" + outconfig);
+            System.IO.File.AppendAllText(@"c:\code\EddFcmsPlugin.txt", "Config " + outconfig + Environment.NewLine);
+            return outconfig;
         }
 
         public static class Prompt
