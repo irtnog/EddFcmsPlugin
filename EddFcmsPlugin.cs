@@ -11,9 +11,9 @@ namespace EddFcmsPlugin
 {
     public class EDDClass
     {
-        private string fcmsEmailAddress { get; set; }
+        private string FcmsEmailAddress { get; set; }
 
-        private string fcmsApiKey { get; set; }
+        private string FcmsApiKey { get; set; }
 
         public EDDClass()
         {
@@ -77,21 +77,21 @@ namespace EddFcmsPlugin
         public string EDDConfig(string istr, bool editit)
         {
             JObject js = JObject.Parse(istr);
-            fcmsEmailAddress = js != null ? js["fcmsEmailAddress"].Str() : "";
-            fcmsApiKey = js != null ? js["fcmsApiKey"].Str() : "";
+            FcmsEmailAddress = js != null ? js["fcmsEmailAddress"].Str() : "";
+            FcmsApiKey = js != null ? js["fcmsApiKey"].Str() : "";
 
             if (editit)
             {
                 //istr = Prompt.ShowDialog("Data:", "Message box for config", istr);
-                ConfigPanel prompt = new ConfigPanel(fcmsEmailAddress, fcmsApiKey);
+                ConfigPanel prompt = new ConfigPanel(FcmsEmailAddress, FcmsApiKey);
                 prompt.ShowDialog();
-                fcmsEmailAddress = prompt.FcmsEmailAddress;
-                fcmsApiKey = prompt.FcmsApiKey;
+                FcmsEmailAddress = prompt.FcmsEmailAddress;
+                FcmsApiKey = prompt.FcmsApiKey;
             }
 
             JObject jout = new JObject();
-            jout["fcmsEmailAddress"] = fcmsEmailAddress;
-            jout["fcmsApiKey"] = fcmsApiKey;
+            jout["fcmsEmailAddress"] = FcmsEmailAddress;
+            jout["fcmsApiKey"] = FcmsApiKey;
             string outconfig = jout.ToString();
 
             System.Diagnostics.Debug.WriteLine("EddFcmsPlugin EDD Config Event:" + outconfig);
