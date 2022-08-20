@@ -29,78 +29,78 @@ namespace EddFcmsPlugin
         /// </summary>
         private void InitializeComponent()
         {
-            this.fcmsEmailAddress = new System.Windows.Forms.TextBox();
-            this.fcmsApiKey = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.fcmsLink = new System.Windows.Forms.LinkLabel();
-            this.okButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.FcmsEmailAddressInput = new System.Windows.Forms.TextBox();
+            this.FcmsApiKeyInput = new System.Windows.Forms.TextBox();
+            this.PictureBox1 = new System.Windows.Forms.PictureBox();
+            this.FcmsEmailAddressInputLabel = new System.Windows.Forms.Label();
+            this.FcmsApiKeyInputLabel = new System.Windows.Forms.Label();
+            this.FcmsWebsiteLink = new System.Windows.Forms.LinkLabel();
+            this.OkButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // fcmsEmailAddress
+            // FcmsEmailAddressInput
             // 
-            this.fcmsEmailAddress.Location = new System.Drawing.Point(309, 141);
-            this.fcmsEmailAddress.Name = "fcmsEmailAddress";
-            this.fcmsEmailAddress.Size = new System.Drawing.Size(256, 20);
-            this.fcmsEmailAddress.TabIndex = 0;
+            this.FcmsEmailAddressInput.Location = new System.Drawing.Point(309, 141);
+            this.FcmsEmailAddressInput.Name = "FcmsEmailAddressInput";
+            this.FcmsEmailAddressInput.Size = new System.Drawing.Size(256, 20);
+            this.FcmsEmailAddressInput.TabIndex = 0;
             // 
-            // fcmsApiKey
+            // FcmsApiKeyInput
             // 
-            this.fcmsApiKey.Location = new System.Drawing.Point(309, 230);
-            this.fcmsApiKey.Name = "fcmsApiKey";
-            this.fcmsApiKey.Size = new System.Drawing.Size(256, 20);
-            this.fcmsApiKey.TabIndex = 1;
+            this.FcmsApiKeyInput.Location = new System.Drawing.Point(309, 230);
+            this.FcmsApiKeyInput.Name = "FcmsApiKeyInput";
+            this.FcmsApiKeyInput.Size = new System.Drawing.Size(256, 20);
+            this.FcmsApiKeyInput.TabIndex = 1;
             // 
-            // pictureBox1
+            // PictureBox1
             // 
-            this.pictureBox1.Image = global::EddFcmsPlugin.Properties.Resources.config_panel_background;
-            this.pictureBox1.Location = new System.Drawing.Point(-1, -1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(252, 444);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.PictureBox1.Image = global::EddFcmsPlugin.Properties.Resources.config_panel_background;
+            this.PictureBox1.Location = new System.Drawing.Point(-1, -1);
+            this.PictureBox1.Name = "PictureBox1";
+            this.PictureBox1.Size = new System.Drawing.Size(252, 444);
+            this.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PictureBox1.TabIndex = 1;
+            this.PictureBox1.TabStop = false;
             // 
-            // label1
+            // FcmsEmailAddressInputLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(306, 125);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "FCMS email address";
+            this.FcmsEmailAddressInputLabel.AutoSize = true;
+            this.FcmsEmailAddressInputLabel.Location = new System.Drawing.Point(306, 125);
+            this.FcmsEmailAddressInputLabel.Name = "FcmsEmailAddressInputLabel";
+            this.FcmsEmailAddressInputLabel.Size = new System.Drawing.Size(103, 13);
+            this.FcmsEmailAddressInputLabel.TabIndex = 2;
+            this.FcmsEmailAddressInputLabel.Text = "FCMS email address";
             // 
-            // label2
+            // FcmsApiKeyInputLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(306, 214);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "FCMS API key";
+            this.FcmsApiKeyInputLabel.AutoSize = true;
+            this.FcmsApiKeyInputLabel.Location = new System.Drawing.Point(306, 214);
+            this.FcmsApiKeyInputLabel.Name = "FcmsApiKeyInputLabel";
+            this.FcmsApiKeyInputLabel.Size = new System.Drawing.Size(76, 13);
+            this.FcmsApiKeyInputLabel.TabIndex = 2;
+            this.FcmsApiKeyInputLabel.Text = "FCMS API key";
             // 
-            // fcmsLink
+            // FcmsWebsiteLink
             // 
-            this.fcmsLink.AutoSize = true;
-            this.fcmsLink.Location = new System.Drawing.Point(483, 419);
-            this.fcmsLink.Name = "fcmsLink";
-            this.fcmsLink.Size = new System.Drawing.Size(129, 13);
-            this.fcmsLink.TabIndex = 3;
-            this.fcmsLink.TabStop = true;
-            this.fcmsLink.Text = "https://fleetcarrier.space/";
+            this.FcmsWebsiteLink.AutoSize = true;
+            this.FcmsWebsiteLink.Location = new System.Drawing.Point(483, 419);
+            this.FcmsWebsiteLink.Name = "FcmsWebsiteLink";
+            this.FcmsWebsiteLink.Size = new System.Drawing.Size(129, 13);
+            this.FcmsWebsiteLink.TabIndex = 3;
+            this.FcmsWebsiteLink.TabStop = true;
+            this.FcmsWebsiteLink.Text = "https://fleetcarrier.space/";
             // 
-            // okButton
+            // OkButton
             // 
-            this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.okButton.Location = new System.Drawing.Point(490, 319);
-            this.okButton.Name = "okButton";
-            this.okButton.Size = new System.Drawing.Size(75, 23);
-            this.okButton.TabIndex = 2;
-            this.okButton.Text = "OK";
-            this.okButton.UseVisualStyleBackColor = true;
-            this.okButton.Click += new System.EventHandler(this.okButton_Click);
+            this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.OkButton.Location = new System.Drawing.Point(490, 319);
+            this.OkButton.Name = "OkButton";
+            this.OkButton.Size = new System.Drawing.Size(75, 23);
+            this.OkButton.TabIndex = 2;
+            this.OkButton.Text = "OK";
+            this.OkButton.UseVisualStyleBackColor = true;
+            this.OkButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // ConfigPanel
             // 
@@ -108,28 +108,28 @@ namespace EddFcmsPlugin
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(624, 441);
-            this.Controls.Add(this.okButton);
-            this.Controls.Add(this.fcmsLink);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.fcmsApiKey);
-            this.Controls.Add(this.fcmsEmailAddress);
+            this.Controls.Add(this.OkButton);
+            this.Controls.Add(this.FcmsWebsiteLink);
+            this.Controls.Add(this.FcmsApiKeyInputLabel);
+            this.Controls.Add(this.FcmsEmailAddressInputLabel);
+            this.Controls.Add(this.PictureBox1);
+            this.Controls.Add(this.FcmsApiKeyInput);
+            this.Controls.Add(this.FcmsEmailAddressInput);
             this.Name = "ConfigPanel";
             this.Text = "Fleet Carrier Management System";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.LinkLabel fcmsLink;
-        private System.Windows.Forms.Button okButton;
-        public System.Windows.Forms.TextBox fcmsEmailAddress;
-        public System.Windows.Forms.TextBox fcmsApiKey;
+        private System.Windows.Forms.PictureBox PictureBox1;
+        private System.Windows.Forms.Label FcmsEmailAddressInputLabel;
+        private System.Windows.Forms.Label FcmsApiKeyInputLabel;
+        private System.Windows.Forms.LinkLabel FcmsWebsiteLink;
+        private System.Windows.Forms.Button OkButton;
+        public System.Windows.Forms.TextBox FcmsEmailAddressInput;
+        public System.Windows.Forms.TextBox FcmsApiKeyInput;
     }
 }

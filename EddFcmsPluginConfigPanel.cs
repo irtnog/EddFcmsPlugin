@@ -16,8 +16,8 @@ namespace EddFcmsPlugin
         {
             InitializeComponent();
 
-            fcmsEmailAddress.Text = email;
-            fcmsApiKey.Text = apikey;
+            FcmsEmailAddressInput.Text = email;
+            FcmsApiKeyInput.Text = apikey;
         }
 
         private void linkToFcms_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
