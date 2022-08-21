@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace EddFcmsPlugin
         private string FcmsEmailAddress { get; set; }
 
         private string FcmsApiKey { get; set; }
+
+        private HttpClient FcmsClient = new HttpClient();
 
         public EDDClass()
         {
@@ -47,7 +50,26 @@ namespace EddFcmsPlugin
 
         void PostCarrierJumpAction(EDDDLLInterfaces.EDDDLLIF.JournalEntry je)
         {
-            return;
+            JObject js = new JObject();
+            // FIXME: replace dummy data
+            js["cmdr"] = "gtbUncleMattMan";
+            js["system"] = "LP 28-188";
+            js["station"] = "Taylor Enterprise";
+            js["data"] = JObject.Parse(je.json);
+            js["is_beta"] = false;
+            js["user"] = FcmsEmailAddress;
+            js["key"] = FcmsApiKey;
+
+            // encode the data and post it to the API endpoint
+            StringContent content = new StringContent(js.ToString(), Encoding.UTF8, "application/json");
+            try
+            {
+                HttpResponseMessage response = FcmsClient.PostAsync("https://fleetcarrier.space/api", content).Result;
+            }
+            catch (Exception)
+            {
+                // no op
+            }
         }
 
         public void EDDNewJournalEntry(EDDDLLInterfaces.EDDDLLIF.JournalEntry je)
