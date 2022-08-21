@@ -45,12 +45,7 @@ namespace EddFcmsPlugin
             System.Diagnostics.Debug.WriteLine("EddFcmsPlugin Main form shown");
         }
 
-        void PostCarrierJumpRequest(EDDDLLInterfaces.EDDDLLIF.JournalEntry je)
-        {
-            return;
-        }
-
-        void PostCarrierJumpCancellation(EDDDLLInterfaces.EDDDLLIF.JournalEntry je)
+        void PostCarrierJumpAction(EDDDLLInterfaces.EDDDLLIF.JournalEntry je)
         {
             return;
         }
@@ -64,10 +59,8 @@ namespace EddFcmsPlugin
             switch (type)
             {
                 case "CarrierJumpRequest":
-                    Task.Run(() => PostCarrierJumpRequest(je));
-                    break;
                 case "CarrierJumpCancelled":
-                    Task.Run(() => PostCarrierJumpCancellation(je));
+                    Task.Run(() => PostCarrierJumpAction(je));
                     break;
             }
         }
