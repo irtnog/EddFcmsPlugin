@@ -45,10 +45,31 @@ namespace EddFcmsPlugin
             System.Diagnostics.Debug.WriteLine("EddFcmsPlugin Main form shown");
         }
 
+        void PostCarrierJumpRequest(EDDDLLInterfaces.EDDDLLIF.JournalEntry je)
+        {
+            return;
+        }
+
+        void PostCarrierJumpCancellation(EDDDLLInterfaces.EDDDLLIF.JournalEntry je)
+        {
+            return;
+        }
+
         public void EDDNewJournalEntry(EDDDLLInterfaces.EDDDLLIF.JournalEntry je)
         {
             System.Diagnostics.Debug.WriteLine("EddFcmsPlugin New Journal Entry " + je.utctime);
             System.IO.File.AppendAllText(@"c:\code\EddFcmsPlugin.txt", "NJE " + je.json + Environment.NewLine);
+
+            string type = je.eventid;
+            switch (type)
+            {
+                case "CarrierJumpRequest":
+                    Task.Run(() => PostCarrierJumpRequest(je));
+                    break;
+                case "CarrierJumpCancelled":
+                    Task.Run(() => PostCarrierJumpCancellation(je));
+                    break;
+            }
         }
 
         public void EDDNewUnfilteredJournalEntry(EDDDLLInterfaces.EDDDLLIF.JournalEntry je)
