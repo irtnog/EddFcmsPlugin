@@ -16,7 +16,7 @@ namespace EddFcmsPlugin
 
         private string FcmsApiKey { get; set; }
 
-        private HttpClient FcmsClient = new HttpClient();
+        private static readonly HttpClient FcmsClient = new HttpClient();
 
         public EDDClass()
         {
