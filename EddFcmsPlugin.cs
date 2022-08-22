@@ -117,12 +117,16 @@ namespace EddFcmsPlugin
             FcmsEmailAddress = js != null ? js["fcmsEmailAddress"].Str() : "";
             FcmsApiKey = js != null ? js["fcmsApiKey"].Str() : "";
 
-            if (editit)
+            if (editit && CmdrName != null)
             {
                 ConfigPanel prompt = new ConfigPanel(FcmsEmailAddress, FcmsApiKey);
                 prompt.ShowDialog();
                 FcmsEmailAddress = prompt.FcmsEmailAddress;
                 FcmsApiKey = prompt.FcmsApiKey;
+            }
+            else if (editit && CmdrName == null)
+            {
+                MessageBox.Show("Please wait for the history refresh to finish and try again.");
             }
 
             JObject jout = new JObject();
