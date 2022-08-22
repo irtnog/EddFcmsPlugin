@@ -52,11 +52,11 @@ namespace EddFcmsPlugin
         {
             JObject js = new JObject();
             // FIXME: replace dummy data
-            js["cmdr"] = "gtbUncleMattMan";
-            js["system"] = "LP 28-188";
-            js["station"] = "Taylor Enterprise";
+            js["cmdr"] = je.cmdrname;
+            js["system"] = je.systemname;
+            js["station"] = je.stationname;
             js["data"] = JObject.Parse(je.json);
-            js["is_beta"] = false;
+            js["is_beta"] = je.beta;
             js["user"] = FcmsEmailAddress;
             js["key"] = FcmsApiKey;
 
