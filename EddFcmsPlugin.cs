@@ -12,6 +12,8 @@ namespace EddFcmsPlugin
 {
     public class EDDClass
     {
+        private string CmdrName { get; set; }
+        
         private string FcmsEmailAddress { get; set; }
 
         private string FcmsApiKey { get; set; }
@@ -29,6 +31,7 @@ namespace EddFcmsPlugin
         {
             System.Diagnostics.Debug.WriteLine("EddFcmsPlugin Init func " + vstr + " " + dllfolder);
 
+            CmdrName = null;
             callbacks = cb;
             return "1.0.0.0";
         }
@@ -41,6 +44,8 @@ namespace EddFcmsPlugin
         public void EDDRefresh(string cmdname, EDDDLLInterfaces.EDDDLLIF.JournalEntry lastje)
         {
             System.Diagnostics.Debug.WriteLine("EddFcmsPlugin Refresh");
+
+            CmdrName = cmdname;
         }
         public void EDDMainFormShown()
         {
