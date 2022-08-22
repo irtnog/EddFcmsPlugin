@@ -14,9 +14,7 @@ namespace EddFcmsPlugin
     {
         private string CmdrName { get; set; }
         
-        private string FcmsEmailAddress { get; set; }
-
-        private string FcmsApiKey { get; set; }
+        private JObject FcmsCredentials { get; set; }
 
         private static readonly HttpClient FcmsClient = new HttpClient();
 
@@ -54,15 +52,21 @@ namespace EddFcmsPlugin
 
         void PostCarrierJumpAction(EDDDLLInterfaces.EDDDLLIF.JournalEntry je)
         {
+            if ((FcmsCredentials[je.cmdrname] == null) ||
+                (FcmsCredentials[je.cmdrname]["FcmsEmailAddress"].Str() == "") ||
+                (FcmsCredentials[je.cmdrname]["FcmsApiKey"].Str() == ""))
+            {
+                System.Diagnostics.Debug.WriteLine("EddFcmsPlugin skipping PostCarrierJumpAction due to missing credentials");
+                return;
+            }
             JObject js = new JObject();
-            // FIXME: replace dummy data
             js["cmdr"] = je.cmdrname;
             js["system"] = je.systemname;
             js["station"] = je.stationname;
             js["data"] = JObject.Parse(je.json);
             js["is_beta"] = je.beta;
-            js["user"] = FcmsEmailAddress;
-            js["key"] = FcmsApiKey;
+            js["user"] = FcmsCredentials[je.cmdrname]["FcmsEmailAddress"].Str();
+            js["key"] = FcmsCredentials[je.cmdrname]["FcmsApiKey"].Str();
 
             // encode the data and post it to the API endpoint
             StringContent content = new StringContent(js.ToString(), Encoding.UTF8, "application/json");
@@ -113,26 +117,34 @@ namespace EddFcmsPlugin
 
         public string EDDConfig(string istr, bool editit)
         {
-            JObject js = JObject.Parse(istr);
-            FcmsEmailAddress = js != null ? js["fcmsEmailAddress"].Str() : "";
-            FcmsApiKey = js != null ? js["fcmsApiKey"].Str() : "";
+            // deserialize the list of FCMS credentials
+            FcmsCredentials = JObject.Parse(istr);
 
             if (editit && CmdrName != null)
             {
-                ConfigPanel prompt = new ConfigPanel(FcmsEmailAddress, FcmsApiKey);
+                if (FcmsCredentials[CmdrName] == null)
+                {
+                    // init credentials for this CMDR
+                    FcmsCredentials[CmdrName] = new JObject();
+                    FcmsCredentials[CmdrName]["FcmsEmailAddress"] = "";
+                    FcmsCredentials[CmdrName]["FcmsApiKey"] = "";
+                }
+
+                // ask this CMDR for new credentials
+                ConfigPanel prompt = new ConfigPanel(FcmsCredentials[CmdrName]["FcmsEmailAddress"].Str(), FcmsCredentials[CmdrName]["FcmsApiKey"].Str());
                 prompt.ShowDialog();
-                FcmsEmailAddress = prompt.FcmsEmailAddress;
-                FcmsApiKey = prompt.FcmsApiKey;
+
+                // store them
+                FcmsCredentials[CmdrName]["FcmsEmailAddress"] = prompt.FcmsEmailAddress;
+                FcmsCredentials[CmdrName]["FcmsApiKey"] = prompt.FcmsApiKey;
             }
             else if (editit && CmdrName == null)
             {
                 MessageBox.Show("Please wait for the history refresh to finish and try again.");
             }
 
-            JObject jout = new JObject();
-            jout["fcmsEmailAddress"] = FcmsEmailAddress;
-            jout["fcmsApiKey"] = FcmsApiKey;
-            string outconfig = jout.ToString();
+            // serialize the list of FCMS credentials
+            string outconfig = FcmsCredentials.ToString();
 
             System.Diagnostics.Debug.WriteLine("EddFcmsPlugin EDD Config Event:" + outconfig);
             return outconfig;
