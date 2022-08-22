@@ -21,7 +21,6 @@ namespace EddFcmsPlugin
         public EDDClass()
         {
             System.Diagnostics.Debug.WriteLine("EddFcmsPlugin Made DLL instance");
-            //var x = new Class1();
         }
 
         EDDDLLInterfaces.EDDDLLIF.EDDCallBacks callbacks;
@@ -29,7 +28,7 @@ namespace EddFcmsPlugin
         public string EDDInitialise(string vstr, string dllfolder, EDDDLLInterfaces.EDDDLLIF.EDDCallBacks cb)
         {
             System.Diagnostics.Debug.WriteLine("EddFcmsPlugin Init func " + vstr + " " + dllfolder);
-            // System.IO.File.AppendAllText(@"c:\code\EddFcmsPlugin.txt", Environment.NewLine + "Init " + vstr + " in " + dllfolder + Environment.NewLine);
+
             callbacks = cb;
             return "1.0.0.0";
         }
@@ -75,7 +74,6 @@ namespace EddFcmsPlugin
         public void EDDNewJournalEntry(EDDDLLInterfaces.EDDDLLIF.JournalEntry je)
         {
             System.Diagnostics.Debug.WriteLine("EddFcmsPlugin New Journal Entry " + je.utctime);
-            // System.IO.File.AppendAllText(@"c:\code\EddFcmsPlugin.txt", "NJE " + je.json + Environment.NewLine);
 
             string type = je.eventid;
             switch (type)
@@ -90,7 +88,6 @@ namespace EddFcmsPlugin
         public void EDDNewUnfilteredJournalEntry(EDDDLLInterfaces.EDDDLLIF.JournalEntry je)
         {
             System.Diagnostics.Debug.WriteLine("EddFcmsPlugin New Unfiltered Journal Entry " + je.utctime);
-            // System.IO.File.AppendAllText(@"c:\code\EddFcmsPlugin.txt", "NJE " + je.json + Environment.NewLine);
         }
 
         public string EDDActionCommand(string cmdname, string[] paras)
@@ -107,7 +104,6 @@ namespace EddFcmsPlugin
         public void EDDNewUIEvent(string json)
         {
             System.Diagnostics.Debug.WriteLine("EddFcmsPlugin EDD UI Event" + json);
-            // System.IO.File.AppendAllText(@"c:\code\EddFcmsPlugin.txt", "UI " + json + Environment.NewLine);
         }
 
         public string EDDConfig(string istr, bool editit)
@@ -118,7 +114,6 @@ namespace EddFcmsPlugin
 
             if (editit)
             {
-                //istr = Prompt.ShowDialog("Data:", "Message box for config", istr);
                 ConfigPanel prompt = new ConfigPanel(FcmsEmailAddress, FcmsApiKey);
                 prompt.ShowDialog();
                 FcmsEmailAddress = prompt.FcmsEmailAddress;
@@ -131,7 +126,6 @@ namespace EddFcmsPlugin
             string outconfig = jout.ToString();
 
             System.Diagnostics.Debug.WriteLine("EddFcmsPlugin EDD Config Event:" + outconfig);
-            // System.IO.File.AppendAllText(@"c:\code\EddFcmsPlugin.txt", "Config " + outconfig + Environment.NewLine);
             return outconfig;
         }
     }
