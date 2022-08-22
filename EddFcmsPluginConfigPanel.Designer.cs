@@ -91,6 +91,7 @@ namespace EddFcmsPlugin
             this.FcmsWebsiteLink.TabIndex = 3;
             this.FcmsWebsiteLink.TabStop = true;
             this.FcmsWebsiteLink.Text = "https://fleetcarrier.space/";
+            this.FcmsWebsiteLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.FcmsWebsiteLink_LinkClicked);
             // 
             // OkButton
             // 
