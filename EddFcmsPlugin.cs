@@ -119,6 +119,11 @@ namespace EddFcmsPlugin
         {
             // deserialize the list of FCMS credentials
             FcmsCredentials = JObject.Parse(istr);
+            if (FcmsCredentials == null)
+            {
+                // parsing failed, don't care why, just start over
+                FcmsCredentials = new JObject();
+            }
 
             if (editit && CmdrName != null)
             {
