@@ -85,10 +85,14 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include=".pre-commit-config.yaml" />
     <None Include="Images\config-panel-background.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".commitlintrc.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
